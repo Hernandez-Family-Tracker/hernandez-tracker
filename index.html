@@ -15,6 +15,7 @@
             --primary-light: #e0e7ff;
             --accent-gold: #f59e0b;
             --accent-green: #10b981;
+            --accent-blue: #0284c7;
             --border: #e2e8f0;
             --skin-tan: #d89060;
             --hair-brown: #3d2314;
@@ -56,20 +57,20 @@
         }
         .nav-card.active { border-color: var(--primary); background: var(--primary-light); }
         .avatar {
-            width: 44px; height: 44px; border-radius: 50%; background: var(--skin-tan);
-            display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
-            position: relative; border: 2px solid var(--hair-brown);
+            width: 48px; height: 48px; border-radius: 50%; background: var(--skin-tan);
+            display: flex; align-items: center; justify-content: center; font-size: 1.4rem;
+            position: relative; border: 2px solid var(--hair-brown); box-shadow: var(--shadow-sm);
         }
         .nav-card span { font-size: 0.85rem; font-weight: 700; }
 
         /* Section Layout */
         .section-card {
             background: var(--bg-card); border-radius: var(--radius-lg); padding: 20px;
-            border: 1px solid var(--border); box-shadow: var(--shadow-md); margin-bottom: 20px;
+            border: 1px solid var(--border); box-shadow: var(--shadow-md);
         }
         .section-title { font-size: 1.1rem; font-weight: 800; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
 
-        /* Task List Styling */
+        /* Interactive Task List */
         .task-grid { display: flex; flex-direction: column; gap: 12px; }
         .task-item {
             display: flex; justify-content: space-between; align-items: center;
@@ -77,53 +78,65 @@
             border: 1px solid var(--border); transition: all 0.2s ease;
         }
         .task-info { display: flex; align-items: center; gap: 12px; }
-        .task-icon { font-size: 1.4rem; }
+        .task-icon { font-size: 1.5rem; }
         .task-label { font-weight: 700; font-size: 0.95rem; }
         .task-desc { font-size: 0.75rem; color: var(--text-muted); }
+
+        /* Water Bottle Interactive Bar */
+        .bottle-bar { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px; }
+        .bottle-icon {
+            width: 32px; height: 38px; border-radius: 6px; border: 2px solid var(--accent-blue);
+            display: flex; align-items: center; justify-content: center; cursor: pointer;
+            font-size: 0.8rem; font-weight: 800; background: var(--bg-card); color: var(--accent-blue);
+            transition: all 0.2s ease;
+        }
+        .bottle-icon.filled { background: var(--accent-blue); color: white; transform: scale(1.05); }
 
         /* Counter Buttons */
         .counter-controls { display: flex; align-items: center; gap: 10px; }
         .btn-counter {
-            width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--border);
+            width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--border);
             background: var(--bg-card); font-weight: 800; cursor: pointer; color: var(--text-main);
+            box-shadow: var(--shadow-sm); font-size: 1.1rem;
         }
-        .counter-val { font-weight: 800; font-size: 1rem; width: 24px; text-align: center; }
+        .counter-val { font-weight: 800; font-size: 1.1rem; width: 28px; text-align: center; }
 
-        /* Checkbox Switch */
+        /* Interactive Checkbox */
         .checkbox-custom {
-            width: 28px; height: 28px; border-radius: 8px; border: 2px solid var(--border);
+            width: 32px; height: 32px; border-radius: 10px; border: 2px solid var(--border);
             background: var(--bg-card); cursor: pointer; display: flex; align-items: center;
             justify-content: center; transition: all 0.2s ease;
         }
         .checkbox-custom.checked { background: var(--accent-green); border-color: var(--accent-green); color: white; }
-        .checkbox-custom.checked::after { content: '✓'; font-weight: 900; }
+        .checkbox-custom.checked::after { content: '✓'; font-weight: 900; font-size: 1.1rem; }
 
-        /* Savings Goal Tracker */
+        /* Interactive Personal Savings Goal Tracker */
         .savings-box {
             background: linear-gradient(135deg, #1e293b, #0f172a); color: white;
-            padding: 20px; border-radius: var(--radius-lg); margin-top: 14px;
+            padding: 20px; border-radius: var(--radius-lg); margin-top: 16px;
         }
         .savings-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
-        .progress-bar-bg { width: 100%; height: 14px; background: rgba(255,255,255,0.15); border-radius: 10px; overflow: hidden; margin: 10px 0; }
+        .progress-bar-bg { width: 100%; height: 16px; background: rgba(255,255,255,0.15); border-radius: 10px; overflow: hidden; margin: 10px 0; }
         .progress-bar-fill { height: 100%; background: linear-gradient(90deg, #10b981, #34d399); width: 0%; transition: width 0.4s ease; }
-        .savings-inputs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; }
+        .savings-inputs { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-top: 12px; }
         .savings-inputs input {
             background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
-            padding: 8px 12px; border-radius: var(--radius-md); color: white; font-weight: 600;
+            padding: 8px 12px; border-radius: var(--radius-md); color: white; font-weight: 600; font-size: 0.85rem;
         }
 
-        /* Summary Dashboard */
+        /* Summary Dashboard Cards */
         .summary-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 14px; }
         .summary-card {
             background: var(--bg-body); padding: 14px; border-radius: var(--radius-md);
             border: 1px solid var(--border); text-align: center;
         }
         .summary-card p { font-size: 0.75rem; color: var(--text-muted); font-weight: 600; }
-        .summary-card h3 { font-size: 1.2rem; font-weight: 800; color: var(--primary); margin-top: 4px; }
+        .summary-card h3 { font-size: 1.25rem; font-weight: 800; color: var(--primary); margin-top: 4px; }
 
         @media (max-width: 600px) {
             .family-nav { grid-template-columns: repeat(2, 1fr); }
             .summary-cards { grid-template-columns: 1fr; }
+            .savings-inputs { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -173,20 +186,22 @@
                 <p>Weekly Est. (with Double-Up)</p>
                 <h3 id="weekly-est">$0.00</h3>
             </div>
-            <div class="summary-card" id="vacation-split-card">
-                <p>Vacation Fund Share</p>
+            <div class="summary-card">
+                <p>Vacation Fund Contribution</p>
                 <h3 id="vacation-share">$0.00</h3>
             </div>
         </div>
 
-        <!-- Personal Savings Goal Tracker -->
+        <!-- Interactive Personal Savings Goal Tracker -->
         <div class="savings-box">
             <div class="savings-header">
                 <div>
                     <h4 id="goal-title-display">🎯 Goal: New Phone Fund</h4>
-                    <p style="font-size: 0.75rem; opacity: 0.8;">Target: $<span id="goal-target-display">150</span> | Saved: $<span id="goal-current-display">45</span></p>
+                    <p style="font-size: 0.75rem; opacity: 0.8; margin-top: 2px;">
+                        Target: $<span id="goal-target-display">150</span> | Saved: $<span id="goal-current-display">45</span>
+                    </p>
                 </div>
-                <span id="goal-percent" style="font-weight: 800; font-size: 1.2rem; color: #34d399;">30%</span>
+                <span id="goal-percent" style="font-weight: 800; font-size: 1.3rem; color: #34d399;">30%</span>
             </div>
             <div class="progress-bar-bg">
                 <div class="progress-bar-fill" id="progress-fill"></div>
@@ -194,21 +209,22 @@
             <div class="savings-inputs">
                 <input type="text" id="goal-name-input" placeholder="Goal Name" onchange="updateGoal()">
                 <input type="number" id="goal-target-input" placeholder="Target ($)" onchange="updateGoal()">
+                <input type="number" id="goal-current-input" placeholder="Current Saved ($)" onchange="updateGoal()">
             </div>
         </div>
     </section>
 
-    <!-- AM Routine Section -->
+    <!-- Morning (AM) Routine Section -->
     <section class="section-card">
-        <div class="section-title">🌅 Morning (AM) Routine</div>
+        <div class="section-title">🌅 Morning (AM) Launch Routine</div>
         <div class="task-grid" id="am-tasks">
             <!-- Dynamically populated -->
         </div>
     </section>
 
-    <!-- PM Routine Section -->
+    <!-- Evening (PM) Routine Section -->
     <section class="section-card">
-        <div class="section-title">🌙 Evening (PM) Routine</div>
+        <div class="section-title">🌙 Evening (PM) Wind-Down Routine</div>
         <div class="task-grid" id="pm-tasks">
             <!-- Dynamically populated -->
         </div>
@@ -233,21 +249,21 @@
 </div>
 
 <script>
-    // State management
     let currentProfile = 'aubree';
 
-    const profiles = {
+    // Load initial profiles from localStorage if available, or set default
+    const defaultProfiles = {
         aubree: {
             name: "Aubree Love (Age 12)",
             waterTarget: 8,
             fruitTarget: 3,
             veggieTarget: 3,
-            vacationSplit: 0.20, // 20% to Vacation Fund
+            vacationSplit: 0.20,
             goalName: "New Phone Fund",
             goalTarget: 150,
             goalCurrent: 45,
-            am: { bed: false, dentalAM: false, waterAM: 0, fruitAM: 1 },
-            pm: { waterPM: 0, fruitPM: 2, veggiePM: 3, fitness: false, laundry: false, ironing: false, dentalPM: false, shower: false },
+            am: { bed: false, dentalAM: false, waterCount: 0, fruitCount: 1 },
+            pm: { fruitPM: 2, veggiePM: 3, fitness: false, laundry: false, ironing: false, dentalPM: false, shower: false },
             autonomy: false
         },
         avianna: {
@@ -255,12 +271,12 @@
             waterTarget: 5,
             fruitTarget: 3,
             veggieTarget: 3,
-            vacationSplit: 0.10, // 10% to Vacation Fund
+            vacationSplit: 0.10,
             goalName: "Special Toy",
             goalTarget: 40,
             goalCurrent: 12,
-            am: { bed: false, dentalAM: false, waterAM: 0, fruitAM: 1 },
-            pm: { waterPM: 0, fruitPM: 2, veggiePM: 3, fitness: false, laundry: false, ironing: false, dentalPM: false, shower: false },
+            am: { bed: false, dentalAM: false, waterCount: 0, fruitCount: 1 },
+            pm: { fruitPM: 2, veggiePM: 3, fitness: false, laundry: false, ironing: false, dentalPM: false, shower: false },
             autonomy: false
         },
         dad: {
@@ -268,12 +284,12 @@
             waterTarget: 10,
             fruitTarget: 3,
             veggieTarget: 3,
-            vacationSplit: 0.50, // 50% to Vacation Fund
+            vacationSplit: 0.50,
             goalName: "Family Trip Fund",
             goalTarget: 500,
             goalCurrent: 200,
-            am: { bed: false, dentalAM: false, waterAM: 0, fruitAM: 1 },
-            pm: { waterPM: 0, fruitPM: 2, veggiePM: 3, fitness: false, laundry: false, ironing: false, dentalPM: false, shower: false },
+            am: { bed: false, dentalAM: false, waterCount: 0, fruitCount: 1 },
+            pm: { fruitPM: 2, veggiePM: 3, fitness: false, laundry: false, ironing: false, dentalPM: false, shower: false },
             autonomy: false
         },
         mom: {
@@ -281,15 +297,21 @@
             waterTarget: 8,
             fruitTarget: 3,
             veggieTarget: 3,
-            vacationSplit: 0.50, // 50% to Vacation Fund
+            vacationSplit: 0.50,
             goalName: "Weekend Getaway",
             goalTarget: 300,
             goalCurrent: 110,
-            am: { bed: false, dentalAM: false, waterAM: 0, fruitAM: 1 },
-            pm: { waterPM: 0, fruitPM: 2, veggiePM: 3, fitness: false, laundry: false, ironing: false, dentalPM: false, shower: false },
+            am: { bed: false, dentalAM: false, waterCount: 0, fruitCount: 1 },
+            pm: { fruitPM: 2, veggiePM: 3, fitness: false, laundry: false, ironing: false, dentalPM: false, shower: false },
             autonomy: false
         }
     };
+
+    let profiles = JSON.parse(localStorage.getItem('hernandezProfiles')) || defaultProfiles;
+
+    function saveState() {
+        localStorage.setItem('hernandezProfiles', JSON.stringify(profiles));
+    }
 
     function toggleTheme() {
         document.body.classList.toggle('dark-mode');
@@ -313,30 +335,30 @@
         document.getElementById('goal-current-display').innerText = p.goalCurrent;
         document.getElementById('goal-name-input').value = p.goalName;
         document.getElementById('goal-target-input').value = p.goalTarget;
+        document.getElementById('goal-current-input').value = p.goalCurrent;
         
-        const pct = Math.min(100, Math.round((p.goalCurrent / p.goalTarget) * 100));
+        const pct = Math.min(100, Math.round((p.goalCurrent / p.goalTarget) * 100)) || 0;
         document.getElementById('goal-percent').innerText = pct + "%";
         document.getElementById('progress-fill').style.width = pct + "%";
 
         // Render AM Tasks
         const amContainer = document.getElementById('am-tasks');
         amContainer.innerHTML = `
-            ${renderTaskRow('🛏️', 'Make Bed', 'Made crisp first thing in the morning', 'bed', p.am.bed, 'checkbox', 'am')}
-            ${renderTaskRow('🪥', 'AM Dental Care', 'Brush & floss after breakfast', 'dentalAM', p.am.dentalAM, 'checkbox', 'am')}
-            ${renderCounterRow('💧', 'AM Hydration (8oz Bottles)', 'Target: ' + p.waterTarget + ' total daily', 'waterAM', p.am.waterAM, 'am')}
-            ${renderCounterRow('🍓', 'AM Fruit Servings', 'Target: ' + p.fruitTarget + ' total daily', 'fruitAM', p.am.fruitAM, 'am')}
+            ${renderTaskRow('🛏️', 'Make Bed', 'Bed made crisp right after waking up', 'bed', p.am.bed, 'am')}
+            ${renderTaskRow('🪥', 'AM Dental Care', 'Brush & floss teeth after breakfast', 'dentalAM', p.am.dentalAM, 'am')}
+            ${renderInteractiveWaterRow(p.am.waterCount, p.waterTarget)}
+            ${renderCounterRow('🍓', 'AM Fruit Servings', 'Target: ' + p.fruitTarget + ' total daily', 'fruitCount', p.am.fruitCount, 'am')}
         `;
 
         // Render PM Tasks
         const pmContainer = document.getElementById('pm-tasks');
         pmContainer.innerHTML = `
-            ${renderCounterRow('💧', 'PM Hydration Finish', 'Complete remaining 8oz bottles', 'waterPM', p.pm.waterPM, 'pm')}
             ${renderCounterRow('🥗', 'PM Veggie Servings', 'Target: ' + p.veggieTarget + ' total daily', 'veggiePM', p.pm.veggiePM, 'pm')}
-            ${renderTaskRow('🏃‍♀️', '15-Min Calisthenics Routine', '10 Push-ups, 10 Sit-ups, 10 Jumping Jacks', 'fitness', p.pm.fitness, 'checkbox', 'pm')}
-            ${renderTaskRow('👕', 'Laundry in Hamper', 'Dirty clothes placed directly in bin upon removal', 'laundry', p.pm.laundry, 'checkbox', 'pm')}
-            ${renderTaskRow('👔', 'Ironing Station Prep', 'Next day clothes placed in designated spot', 'ironing', p.pm.ironing, 'checkbox', 'pm')}
-            ${renderTaskRow('🪥', 'PM Dental Care', 'Brush & floss before bed', 'dentalPM', p.pm.dentalPM, 'checkbox', 'pm')}
-            ${renderTaskRow('🚿', 'Nightly Shower', 'Shower before bed', 'shower', p.pm.shower, 'checkbox', 'pm')}
+            ${renderTaskRow('🏃‍♀️', '15-Min Calisthenics Routine', '10 Push-ups, 10 Sit-ups, 10 Jumping Jacks', 'fitness', p.pm.fitness, 'pm')}
+            ${renderTaskRow('👕', 'Laundry in Hamper', 'Dirty clothes placed directly in bin upon removal', 'laundry', p.pm.laundry, 'pm')}
+            ${renderTaskRow('👔', 'Ironing Station Prep', 'Clothes for tomorrow picked out & placed in ironing spot', 'ironing', p.pm.ironing, 'pm')}
+            ${renderTaskRow('🪥', 'PM Dental Care', 'Brush & floss teeth before bed', 'dentalPM', p.pm.dentalPM, 'pm')}
+            ${renderTaskRow('🚿', 'Nightly Shower', 'Shower before bed', 'shower', p.pm.shower, 'pm')}
         `;
 
         // Autonomy Check
@@ -344,9 +366,10 @@
         autoEl.classList.toggle('checked', p.autonomy);
 
         calculateEarnings();
+        saveState();
     }
 
-    function renderTaskRow(icon, title, desc, key, value, type, timeOfDay) {
+    function renderTaskRow(icon, title, desc, key, value, timeOfDay) {
         return `
             <div class="task-item">
                 <div class="task-info">
@@ -380,6 +403,37 @@
         `;
     }
 
+    function renderInteractiveWaterRow(currentCount, targetCount) {
+        let bottlesHTML = '';
+        for (let i = 1; i <= targetCount; i++) {
+            const isFilled = i <= currentCount;
+            bottlesHTML += `<div class="bottle-icon ${isFilled ? 'filled' : ''}" onclick="setWater(${i})">8oz</div>`;
+        }
+
+        return `
+            <div class="task-item" style="flex-direction: column; align-items: flex-start; gap: 8px;">
+                <div class="task-info">
+                    <span class="task-icon">💧</span>
+                    <div>
+                        <div class="task-label">Daily Hydration Tracker (${currentCount}/${targetCount} Bottles)</div>
+                        <div class="task-desc">Tap each 8oz water bottle as you finish drinking it</div>
+                    </div>
+                </div>
+                <div class="bottle-bar">${bottlesHTML}</div>
+            </div>
+        `;
+    }
+
+    function setWater(count) {
+        const p = profiles[currentProfile];
+        if (p.am.waterCount === count) {
+            p.am.waterCount = count - 1; // Toggle off if tapping same bottle
+        } else {
+            p.am.waterCount = count;
+        }
+        renderDashboard();
+    }
+
     function toggleTask(timeOfDay, key) {
         const p = profiles[currentProfile];
         p[timeOfDay][key] = !p[timeOfDay][key];
@@ -402,6 +456,7 @@
         const p = profiles[currentProfile];
         p.goalName = document.getElementById('goal-name-input').value;
         p.goalTarget = Number(document.getElementById('goal-target-input').value) || 100;
+        p.goalCurrent = Number(document.getElementById('goal-current-input').value) || 0;
         renderDashboard();
     }
 
@@ -412,8 +467,8 @@
         // Count AM
         if (p.am.bed) completed++;
         if (p.am.dentalAM) completed++;
-        if (p.am.waterAM + p.pm.waterPM >= p.waterTarget) completed++;
-        if (p.am.fruitAM + p.pm.fruitPM >= p.fruitTarget) completed++;
+        if (p.am.waterCount >= p.waterTarget) completed++;
+        if (p.am.fruitCount + (p.pm.fruitPM || 0) >= p.fruitTarget) completed++;
 
         // Count PM
         if (p.pm.veggiePM >= p.veggieTarget) completed++;
